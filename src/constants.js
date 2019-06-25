@@ -1,0 +1,9 @@
+const GET_INSTRUMENTS_LIST = 'GET_INSTRUMENTS_LIST';
+const SET_DATA = 'SET_DATA';
+const GET_ORDER_BOOK = 'GET_ORDER_BOOK';
+
+export {  //eslint-disable-line
+  GET_INSTRUMENTS_LIST,
+  SET_DATA,
+  GET_ORDER_BOOK,
+};
