@@ -68,64 +68,65 @@ class Home extends Component {
         >
           Load Order Book
         </Button>
-        
-        {bids.length > 0
-          && (
-          <Table
-            striped
-          >
-            <Table.Header>
-              <Table.Row>
-                <Table.HeaderCell colSpan="2">Bids</Table.HeaderCell>
-              </Table.Row>
-              <Table.Row>
-                <Table.HeaderCell>Quantity</Table.HeaderCell>
-                <Table.HeaderCell>Price</Table.HeaderCell>
-              </Table.Row>
-            </Table.Header>
-            <Table.Body>
-              {bids.map((val, i) => (
-                <Table.Row key={i}>
-                  <Table.Cell>
-                    {val[1]}
-                  </Table.Cell>
-                  <Table.Cell>
-                    {val[0]}
-                  </Table.Cell>
-                </Table.Row>))}
-            </Table.Body>
-          </Table>
-          )
-        }
+        <div className="table-fix">
+          {bids.length > 0
+            && (
+            <Table
+              striped
+            >
+              <Table.Header>
+                <Table.Row>
+                  <Table.HeaderCell colSpan="2">Bids</Table.HeaderCell>
+                </Table.Row>
+                <Table.Row>
+                  <Table.HeaderCell>Quantity</Table.HeaderCell>
+                  <Table.HeaderCell>Price</Table.HeaderCell>
+                </Table.Row>
+              </Table.Header>
+              <Table.Body>
+                {bids.map((val, i) => (
+                  <Table.Row key={i}>
+                    <Table.Cell>
+                      {val[1]}
+                    </Table.Cell>
+                    <Table.Cell>
+                      {val[0]}
+                    </Table.Cell>
+                  </Table.Row>))}
+              </Table.Body>
+            </Table>
+            )
+          }
 
-        {asks.length > 0
-          && (
-          <Table
-            striped
-          >
-            <Table.Header>
-              <Table.Row>
-                <Table.HeaderCell colSpan="2">Asks</Table.HeaderCell>
-              </Table.Row>
-              <Table.Row>
-                <Table.HeaderCell>Quantity</Table.HeaderCell>
-                <Table.HeaderCell>Price</Table.HeaderCell>
-              </Table.Row>
-            </Table.Header>
-            <Table.Body>
-              {asks.map((val, i) => (
-                <Table.Row key={i}>
-                  <Table.Cell>
-                    {val[1]}
-                  </Table.Cell>
-                  <Table.Cell>
-                    {val[0]}
-                  </Table.Cell>
-                </Table.Row>))}
-            </Table.Body>
-          </Table>
-          )
-        }
+          {asks.length > 0
+            && (
+            <Table
+              striped
+            >
+              <Table.Header>
+                <Table.Row>
+                  <Table.HeaderCell colSpan="2">Asks</Table.HeaderCell>
+                </Table.Row>
+                <Table.Row>
+                  <Table.HeaderCell>Quantity</Table.HeaderCell>
+                  <Table.HeaderCell>Price</Table.HeaderCell>
+                </Table.Row>
+              </Table.Header>
+              <Table.Body>
+                {asks.map((val, i) => (
+                  <Table.Row key={i}>
+                    <Table.Cell>
+                      {val[1]}
+                    </Table.Cell>
+                    <Table.Cell>
+                      {val[0]}
+                    </Table.Cell>
+                  </Table.Row>))}
+              </Table.Body>
+            </Table>
+            )
+          }
+        </div>
 
         
       </div>

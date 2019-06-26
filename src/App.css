@@ -13,8 +13,19 @@
   margin: 10px auto;
   display: block
 }
-.ui.table{
+.ui.table {
   text-align: center;
   width: 40%;
   float: left;
+  flex:1;
+  flex-flow: row;
+}
+
+.ui.table:first-child {
+  margin-top: 1em;
+}
+
+
+.table-fix {
+  display: flex;
 }
