@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Button, Table, Dropdown } from 'semantic-ui-react';
+import { Button, Table, Dropdown, Header } from 'semantic-ui-react';
 import { createOptionList } from '../../utils/common';
+import Grid from '../Grid';
 
 import { getInstrumentsListSaga, getData } from '../../actions';
 
-import styles from './styles';
+// import styles from './styles';
 
 class Home extends Component {
   constructor(props) {
@@ -51,6 +52,7 @@ class Home extends Component {
     const { options, orderBookLoad } = this.state;
     return (
       <div>
+        <Header as="h3">Search or Select Instrument</Header>
         <Dropdown
           placeholder="Select Instrument"
           fluid
@@ -71,64 +73,15 @@ class Home extends Component {
         <div className="table-fix">
           {bids.length > 0
             && (
-            <Table
-              striped
-            >
-              <Table.Header>
-                <Table.Row>
-                  <Table.HeaderCell colSpan="2">Bids</Table.HeaderCell>
-                </Table.Row>
-                <Table.Row>
-                  <Table.HeaderCell>Quantity</Table.HeaderCell>
-                  <Table.HeaderCell>Price</Table.HeaderCell>
-                </Table.Row>
-              </Table.Header>
-              <Table.Body>
-                {bids.map((val, i) => (
-                  <Table.Row key={i}>
-                    <Table.Cell>
-                      {val[1]}
-                    </Table.Cell>
-                    <Table.Cell>
-                      {val[0]}
-                    </Table.Cell>
-                  </Table.Row>))}
-              </Table.Body>
-            </Table>
+            <Grid values={bids} />
             )
           }
-
           {asks.length > 0
             && (
-            <Table
-              striped
-            >
-              <Table.Header>
-                <Table.Row>
-                  <Table.HeaderCell colSpan="2">Asks</Table.HeaderCell>
-                </Table.Row>
-                <Table.Row>
-                  <Table.HeaderCell>Quantity</Table.HeaderCell>
-                  <Table.HeaderCell>Price</Table.HeaderCell>
-                </Table.Row>
-              </Table.Header>
-              <Table.Body>
-                {asks.map((val, i) => (
-                  <Table.Row key={i}>
-                    <Table.Cell>
-                      {val[1]}
-                    </Table.Cell>
-                    <Table.Cell>
-                      {val[0]}
-                    </Table.Cell>
-                  </Table.Row>))}
-              </Table.Body>
-            </Table>
+            <Grid values={asks} />
             )
           }
         </div>
-
-        
       </div>
     );
   }

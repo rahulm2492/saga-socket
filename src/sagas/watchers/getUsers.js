@@ -1,31 +1,23 @@
-import { take, put, takeEvery, call, all } from 'redux-saga/effects';
+import { take, put, takeEvery, call, all, takeLatest } from 'redux-saga/effects';
 import { eventChannel, delay } from 'redux-saga';
+import { subscribeMsg, unSubscribeMsg } from '../../utils/common';
 
 import { GET_INSTRUMENTS_LIST, GET_ORDER_BOOK } from '../../constants';
 import { getUsers } from '../../lib/api';
 
 const ws = new WebSocket('wss://ws.bitstamp.net/');
 
-
-const subscribeMsg = inst => ({
-  event: 'bts:subscribe',
-  data: {
-    channel: `order_book_${inst}`
-  }
-});
-
-const unSubscribeMsg = inst => ({
-  event: 'bts:unsubscribe',
-  data: {
-    channel: `order_book_${inst}`
-  }
-});
-
 function initWebsocket(data) {
   console.log(data, 'stream');
   const { selectedInstrument, prevInstrument } = data && data.payload;
   return eventChannel((emitter) => {
+
+
+    // below conditions will execute only if prevInstrument is present
     prevInstrument && ws.send(JSON.stringify(unSubscribeMsg(prevInstrument.split('/').join('').toLowerCase())));
+  
+    // below conditions will execute only if prevInstrument is not present(at the very beginning)
+
     !prevInstrument && ws.send(JSON.stringify(subscribeMsg(selectedInstrument.split('/').join('').toLowerCase())));
 
     ws.onerror = (error) => {
